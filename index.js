@@ -1,9 +1,5 @@
-import { listen } from './src/server.js';
-import { connect } from './src/database';
+ const server = require('./src/app.js')
 
-
-connect.sync({ force: true }).then(() => {
-  server(3001, () => {
-    console.log('Escuchando el puerto 3001'); 
-  });
+  server.listen(3001, () => {
+    console.log("Server listening on 3001"); 
 });
