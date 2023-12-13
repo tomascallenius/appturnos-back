@@ -6,10 +6,14 @@ const WorkDaysCreate = new Schema ({
         type: String,
         required: false
     },
-    hairstylist: {
+    /* hairstylist: {
         type: String,
         required: true
-    },
+    }, */
+    time: {
+        type: Array,
+        required: true
+    }
 },{
     timestamps: true
 });
@@ -17,3 +21,4 @@ const WorkDaysCreate = new Schema ({
 const WorkDays = model('WorkDays', WorkDaysCreate);
 
 module.exports = WorkDays;
+
