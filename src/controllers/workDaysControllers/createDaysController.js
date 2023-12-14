@@ -1,24 +1,26 @@
-const WorkDays = require('../../DB/models/WorkDays');
+const WorkDay = require('../../DB/models/WorkDay');
 
-const createDaysController = async (name, days, availability) => {
+const createDaysController = async (date, hairstylist, time) => {
     try {
-        // Buscar un documento existente con los mismos días
-        const existingDay = await WorkDays.findOne({ days });
-
-        const newTimeEntries = availability.map(element => ({
-            [element]: { [name]: 'free'}
-        }));
-
+        const existingDay = await WorkDay.findOne({ hairstylist, date });
         if (existingDay) {
-            // Si existe, actualizar el documento existente
-            existingDay.time.push(...newTimeEntries);
-            await existingDay.save();
-            return existingDay;
+            console.log('este es el dia',existingDay)
         } else {
             // Si no existe, crear un nuevo documento
-            const createdDay = new WorkDays({ days, time: newTimeEntries });
-            await createdDay.save();
-            return createdDay;
+            const newDay = new WorkDay({
+                date,
+                hairstylist,
+                time: Array(1441).fill(null)
+            });
+            time.forEach(element => {
+                if (element >= 0 && element < 1441) {
+                    newDay.time[element] = 'free';
+                }
+            });
+
+            await newDay.save();
+            console.log('Nuevo documento creado:', newDay);
+            return newDay;
         }
     } catch (error) {
         console.error('Error al crear o actualizar día de trabajo:', error);
@@ -28,4 +30,15 @@ const createDaysController = async (name, days, availability) => {
 
 module.exports = createDaysController;
 
-// const myArray = new Array(25).fill(null);
+/*  LO QUE VIENE POR PARAMETRO
+
+ date: "11/12/2023"
+ hairstylist: "facundito"
+ time: [
+    3,
+    4,
+    5,
+    6,
+    11,
+    12
+ ] */
