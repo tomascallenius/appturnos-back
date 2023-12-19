@@ -1,12 +1,21 @@
+const WorkDay = require('../../DB/models/WorkDay');
 
 const getDaysController = async () => {
     try {
-        const listo = 'simulamos que son todos los dias creados'
-        return listo;
+        const days = await WorkDay.find().select('date hairstylist');
+        return days;
     } catch (error) {
-        console.error('Error al crear usuario:', error);
+        console.error('Error al obtener días laborales:', error);
         throw error;
     }
-}
+};
 
 module.exports = getDaysController;
+
+/* FORMATO DE RESPUESTA
+
+days = [
+    { date: '2023-12-14', hairstylist: 'Calenius' },
+    { date: '2023-12-15', hairstylist: 'Facundo' },
+    Otros documentos...
+  ] */

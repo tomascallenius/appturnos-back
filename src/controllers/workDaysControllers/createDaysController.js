@@ -2,11 +2,6 @@ const WorkDay = require('../../DB/models/WorkDay');
 
 const createDaysController = async (date, hairstylist, time) => {
     try {
-        const existingDay = await WorkDay.findOne({ hairstylist, date });
-        if (existingDay) {
-            console.log('este es el dia',existingDay)
-        } else {
-            // Si no existe, crear un nuevo documento
             const newDay = new WorkDay({
                 date,
                 hairstylist,
@@ -17,13 +12,10 @@ const createDaysController = async (date, hairstylist, time) => {
                     newDay.time[element] = 'free';
                 }
             });
-
             await newDay.save();
-            console.log('Nuevo documento creado:', newDay);
             return newDay;
-        }
     } catch (error) {
-        console.error('Error al crear o actualizar día de trabajo:', error);
+        console.error('Error al crear día de laboral:', error);
         throw error;
     }
 };
