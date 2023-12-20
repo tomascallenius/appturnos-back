@@ -1,15 +1,19 @@
-const User = require('../../DB/models/User');
+const User = require("../../DB/models/User");
 
-const createUserController = async (name, email, password) => {
-    try {
-        const newUser = new User({ name, email });
-        newUser.password = await newUser.encryptPassword(password);  // accede a la propiedad password de la instancia, y le asigna el metodo de la instancia de User
-        await newUser.save();
-        return newUser;
-    } catch (error) {
-        console.error('Error al crear usuario:', error);
-        throw error;
+const createUserController = async (name, email) => {
+  try {
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return existingUser;
+    } else {
+      const newUser = new User({ name, email });
+      await newUser.save();
+      return newUser;
     }
-}
+  } catch (error) {
+    console.error("Error al crear usuario:", error);
+    throw error;
+  }
+};
 
 module.exports = createUserController;
