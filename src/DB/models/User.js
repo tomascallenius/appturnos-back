@@ -8,11 +8,22 @@ const UserSchema = new Schema ({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
-    password: {
-        type: String,
-        required: true
+    whatsapp: {
+        type: Number,
+        required: false,
+        default: null
+    },
+    services: {
+        type: Array,
+        required: false,
+    },
+    admin: {
+        type: Boolean,
+        required: false,
+        default: false
     }
 },{
     timestamps: true
