@@ -22,15 +22,18 @@ const UserSchema = new Schema(
       required: false,
     },
     admin: {
-      type: Boolean,
-      required: false,
-      default: false,
+        type: Boolean,
+        required: false,
+        default: false
     },
-  },
-  {
-    timestamps: true,
-  }
-);
+    worker: {
+        type: Boolean,
+        required: false,
+        default: false
+    }
+},{
+    timestamps: true
+});
 
 UserSchema.methods.encryptPassword = async function (password) {
   const salt = await bcrypt.genSalt(5);
