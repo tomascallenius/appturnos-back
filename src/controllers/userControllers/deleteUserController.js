@@ -7,7 +7,7 @@ const deleteUserController = async (email) => {
 
     if (existingUser) {
       // Eliminar el usuario de la base de datos
-      await existingUser.deleteOne(); // O puedes usar existingUser.deleteOne();
+      await existingUser.deleteOne();
 
       return existingUser; // Devolver el usuario eliminado
     } else {
