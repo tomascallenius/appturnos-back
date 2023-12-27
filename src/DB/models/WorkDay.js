@@ -5,12 +5,16 @@ const WorkDaysCreate = new Schema({
         type: String,
         required: true
     },
-    hairstylist: {
+    email: {
         type: String,
         required: true
     },
     time: {
         type: Array,
+        required: true
+    },
+    services: {
+        type: Object,
         required: true
     }
 }, {

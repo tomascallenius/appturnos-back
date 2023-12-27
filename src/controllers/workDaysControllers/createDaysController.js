@@ -1,11 +1,12 @@
 const WorkDay = require('../../DB/models/WorkDay');
 
-const createDaysController = async (date, hairstylist, time) => {
+const createDaysController = async (date, email, time, services) => {
     try {
             const newDay = new WorkDay({
                 date,
-                hairstylist,
-                time: Array(1441).fill(null)
+                email,
+                time: Array(1441).fill(null),
+                services
             });
             time.forEach(element => {
                 if (element >= 0 && element < 1441) {
@@ -25,7 +26,7 @@ module.exports = createDaysController;
 /*  LO QUE VIENE POR PARAMETRO
 
  date: "11/12/2023"
- hairstylist: "facundito"
+ email: "facun@gmail.com"
  time: [
     3,
     4,

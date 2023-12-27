@@ -18,7 +18,7 @@ const UserSchema = new Schema(
       default: null,
     },
     services: {
-      type: Array,
+      type: Object,
       required: false,
     },
     admin: {
