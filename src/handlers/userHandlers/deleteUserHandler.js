@@ -3,7 +3,6 @@ const deleteUserController = require("../../controllers/userControllers/deleteUs
 
 const deleteUserHandler = async (req, res) => {
   const { email } = req.body; 
-console.log(email, "pase por handler");
   try {
     const result = await deleteUserController(email);
 

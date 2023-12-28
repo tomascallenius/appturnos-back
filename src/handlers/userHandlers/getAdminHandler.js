@@ -2,7 +2,6 @@ const getAdminController = require("../../controllers/userControllers/getAdminCo
 
 const getAdminHandler = async (req, res) => {
       const { email } = req.body; 
-      console.log(email, "handler");
   try {
     const isadmin = await getAdminController(email);
     res.status(200).json({ isadmin }); //true o false de la propiedad admin del modelo User.
