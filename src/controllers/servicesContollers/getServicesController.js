@@ -4,7 +4,6 @@ const getServicesController = async () => {
     try {
         // Obtener todos los servicios desde la base de datos
         const services = await Services.find();
-        console.log(services)
 
         return services[0].allServices;
     } catch (error) {

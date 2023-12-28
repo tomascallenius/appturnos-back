@@ -1,11 +1,12 @@
 const WorkDay = require("../../DB/models/WorkDay");
 
-const createDaysController = async (date, email, time) => {
+const createDaysController = async (date, email, time, services) => {
   try {
     const newDay = new WorkDay({
       date,
       email,
       time: Array(1441).fill(null),
+      services
     });
     time.forEach((element) => {
       if (element >= 0 && element < 1441) {

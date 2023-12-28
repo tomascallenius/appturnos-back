@@ -14,6 +14,10 @@ const WorkDaysCreate = new Schema(
       type: Array,
       required: true,
     },
+    services: {
+      type: Object,
+      required: false,
+    },
   },
   {
     timestamps: true,
