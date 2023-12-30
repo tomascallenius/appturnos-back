@@ -7,7 +7,7 @@ const getDaysByServiceHandler = require("../../handlers/workDaysHandlers/getDays
 const router = Router();
 
 router.post("/create", createDaysHandler);
-router.get('/getdays', getDaysHandler);
+router.post('/getdays', getDaysHandler);
 router.get("/daysByService", getDaysByServiceHandler);
 
 router.put('/updateday', updateDayHandler);

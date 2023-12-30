@@ -2,6 +2,7 @@ const WorkDay = require("../../DB/models/WorkDay");
 //devuelve ej:result = {12:{15:"toUpdate"},12:{16:"warningUpdate"}}
 const getDaysController = async (email) => {
   try {
+    console.log('pase 2')
     const days = await WorkDay.find(email).select("date time");
 
     // Inicializar el objeto de resultado
@@ -35,11 +36,3 @@ const getDaysController = async (email) => {
 };
 
 module.exports = getDaysController;
-
-/* FORMATO DE RESPUESTA
-
-days = [
-    { date: '2023-12-14', hairstylist: 'Calenius' },
-    { date: '2023-12-15', hairstylist: 'Facundo' },
-    Otros documentos...
-  ] */

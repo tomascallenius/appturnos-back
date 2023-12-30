@@ -5,6 +5,7 @@ const getDaysHandler = async (req, res) => {
   const { email } = req.body;
 
     try {
+        console.log('pase')
         const days = await getDaysController(email);
         res.status(200).json(days);
     } catch (error) {
