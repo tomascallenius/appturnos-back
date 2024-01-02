@@ -1,25 +1,28 @@
 const Services = require("../../DB/models/Services");
+const User = require("../../DB/models/User");
 
 const createServicesController = async (service) => {
   try {
-    // Verificar si ya existe un documento en la colección
     const existingService = await Services.findOne({});
 
     if (existingService) {
-      // Si ya existe, verificar si el servicio ya está en allServices
       const isServiceIncluded = existingService.allServices.includes(service);
 
       if (isServiceIncluded) {
         // Si el servicio ya existe, retornar un mensaje indicando que ya existe
         return {
-          message: `El servicio "${existingService}" ya existe en la colección.`,
+          message: "El servicio ya existe en la colección.",
+          existingService,
         };
       } else {
         // Si no existe, agregar el nuevo servicio a la propiedad allServices
         existingService.allServices.push(service);
 
+        // Actualizar el campo services de los usuarios
+        await User.updateMany({}, { $set: { [`services.${service}`]: null } });
+
         // Guardar la actualización en la base de datos
-        await existingService.save();
+        await existingService.save(); // guarda los servicios
 
         return existingService; // Puedes devolver el servicio actualizado si es necesario
       }
@@ -28,6 +31,9 @@ const createServicesController = async (service) => {
       const newService = new Services({
         allServices: [service],
       });
+
+      // Actualizar el campo services de los usuarios
+      await User.updateMany({}, { $set: { [`services.${service}`]: null } });
 
       // Guardar el nuevo servicio en la base de datos
       await newService.save();
