@@ -3,7 +3,7 @@ const User = require("../../DB/models/User");
 
 const getDaysByServiceController = async () => {
   try {
-    const workdays = await WorkDay.find().select("date services time email");
+    const workdays = await WorkDay.find().select("month day services time email");
 
     // Obtener todos los usuarios para comparar los correos electrónicos
     const users = await User.find().select("email name");
