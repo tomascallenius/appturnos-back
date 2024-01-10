@@ -2,11 +2,9 @@ const getDaysController = require("../../controllers/workDaysControllers/getDays
 
 
 const getDaysHandler = async (req, res) => {
-  const { email } = req.body;
 
     try {
-        console.log('pase')
-        const days = await getDaysController(email);
+        const days = await getDaysController();
         res.status(200).json(days);
     } catch (error) {
         res.status(500).json({message: 'Error al obtener los dias.'});

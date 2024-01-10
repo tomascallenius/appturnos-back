@@ -2,8 +2,12 @@ const { Schema, model } = require("mongoose");
 
 const WorkDaysCreate = new Schema(
   {
-    date: {
-      type: String,
+    month: {
+      type: Number,
+      required: true,
+    },
+    day: {
+      type: Number,
       required: true,
     },
     email: {
@@ -14,9 +18,13 @@ const WorkDaysCreate = new Schema(
       type: Array,
       required: true,
     },
+    turn: {
+      type: Boolean,
+      required: true,
+    },
     services: {
       type: Object,
-      required: false,
+      required: true,
     },
   },
   {

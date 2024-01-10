@@ -10,30 +10,24 @@ const UserSchema = new Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
     },
-    whatsapp: {
-      type: Number,
-      required: false,
-      default: null,
+    admin: {
+      type: Boolean,
+      required: true,
+    },
+    worker: {
+      type: Boolean,
+      required: true,
     },
     services: {
       type: Object,
-      required: false,
+      required: true,
     },
-    admin: {
-        type: Boolean,
-        required: false,
-        default: false
-    },
-    worker: {
-        type: Boolean,
-        required: false,
-        default: false
-    }
-},{
-    timestamps: true
-});
+  },
+  {
+    timestamps: true,
+  }
+);
 
 UserSchema.methods.encryptPassword = async function (password) {
   const salt = await bcrypt.genSalt(5);

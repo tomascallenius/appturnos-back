@@ -3,16 +3,17 @@ const createDaysHandler = require("../../handlers/workDaysHandlers/createDaysHan
 const getDaysHandler = require("../../handlers/workDaysHandlers/getDaysHandler.js");
 const updateDayHandler = require("../../handlers/workDaysHandlers/updateDayHandler.js");
 const getDaysByServiceHandler = require("../../handlers/workDaysHandlers/getDaysByServiceHandler.js");
+const getDaysByEmailHandler = require("../../handlers/workDaysHandlers/getDaysByEmailHandler.js");
 
 const router = Router();
 
-router.post("/create", createDaysHandler);
-router.post('/getdays', getDaysHandler);
+router.get("/", getDaysHandler);
 router.get("/daysByService", getDaysByServiceHandler);
+router.post("/create", createDaysHandler);
+router.post("/byemail", getDaysByEmailHandler);
 
-router.put('/updateday', updateDayHandler);
+router.put("/updateday", updateDayHandler);
 
 /* router.get('/getHours', getHoursHandler); */
-
 
 module.exports = router;
