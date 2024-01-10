@@ -16,6 +16,6 @@ const CreateServices = new Schema(
   }
 );
 
-const Services = model('Services', CreateServices); // este nombre solo sirve para referirme al modelo (WorkDays)
+const Services = model('Services', CreateServices); // este nombre solo sirve para referirme al modelo (Services)
 
 module.exports = Services;
