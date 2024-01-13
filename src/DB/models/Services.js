@@ -1,13 +1,9 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const CreateServices = new Schema(
   {
     allServices: {
       type: Array,
-      required: true,
-    },
-    daysAndTimeOfWork: {
-      type: Object,
       required: true,
     },
   },
@@ -16,6 +12,6 @@ const CreateServices = new Schema(
   }
 );
 
-const Services = model('Services', CreateServices); // este nombre solo sirve para referirme al modelo (Services)
+const Services = model("Services", CreateServices); // este nombre solo sirve para referirme al modelo (Services)
 
 module.exports = Services;

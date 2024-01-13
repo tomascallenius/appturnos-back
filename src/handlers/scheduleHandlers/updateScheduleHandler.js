@@ -2,7 +2,6 @@ const updateScheduleController = require("../../controllers/scheduleControllers/
 
 const updateScheduleHandler = async (req, res) => {
   const { newSchedule } = req.body;
-  console.log(newSchedule, "pase por el handler del update");
   try {
     const updatedSchedule = await updateScheduleController(newSchedule);
     res.status(200).json(updatedSchedule);
