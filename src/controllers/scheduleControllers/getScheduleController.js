@@ -4,9 +4,7 @@ const getScheduleController = async () => {
   try {
     const existing = await Schedule.findOne();
     if (existing) {
-      console.log(existing);
-
-      return existing;
+      return existing.businessSchedule;
     } else {
       const newSchedule = new Schedule({
         businessSchedule: {
@@ -18,10 +16,10 @@ const getScheduleController = async () => {
           5: { open: 0, close: 1440 },
           6: { open: 0, close: 1440 },
         },
+        noWorkDays: { prop: "init" },
       });
       await newSchedule.save();
-      console.log(newSchedule);
-      return newSchedule;
+      return newSchedule.businessSchedule;
     }
   } catch (error) {
     console.error("Error al obtener el horario desde la base de datos:", error);

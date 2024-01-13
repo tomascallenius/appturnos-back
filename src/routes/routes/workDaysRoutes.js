@@ -8,10 +8,9 @@ const getDaysByEmailHandler = require("../../handlers/workDaysHandlers/getDaysBy
 const router = Router();
 
 router.get("/", getDaysHandler);
-router.get("/daysByService", getDaysByServiceHandler);
+router.get("/daysbyservice", getDaysByServiceHandler);
 router.post("/create", createDaysHandler);
 router.post("/byemail", getDaysByEmailHandler);
-
 router.put("/updateday", updateDayHandler);
 
 /* router.get('/getHours', getHoursHandler); */
