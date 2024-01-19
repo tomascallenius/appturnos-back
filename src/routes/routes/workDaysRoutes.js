@@ -1,14 +1,16 @@
 const { Router } = require("express");
 const createDaysHandler = require("../../handlers/workDaysHandlers/createDaysHandler.js");
-const getDaysHandler = require("../../handlers/workDaysHandlers/getDaysHandler.js");
 const updateDayHandler = require("../../handlers/workDaysHandlers/updateDayHandler.js");
-const getDaysByServiceHandler = require("../../handlers/workDaysHandlers/getDaysByServiceHandler.js");
 const getDaysByEmailHandler = require("../../handlers/workDaysHandlers/getDaysByEmailHandler.js");
+const getDaysByServicesHandler = require("../../handlers/workDaysHandlers/getDaysByServicesHandler.js");
+const getDaysHandler = require("../../handlers/workDaysHandlers/getDaysHandler.js");
+const getDayForTurnsHandler = require("../../handlers/workDaysHandlers/getDayForTurnsHandler.js");
 
 const router = Router();
 
 router.get("/", getDaysHandler);
-router.get("/daysbyservice", getDaysByServiceHandler);
+router.post("/dayforturns", getDayForTurnsHandler);
+router.post("/byservices", getDaysByServicesHandler);
 router.post("/create", createDaysHandler);
 router.post("/byemail", getDaysByEmailHandler);
 router.put("/updateday", updateDayHandler);

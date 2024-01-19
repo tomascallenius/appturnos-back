@@ -3,6 +3,7 @@ const User = require("../../DB/models/User");
 
 const createServicesController = async (service) => {
   try {
+    // Buscar el primer documento en la colección de servicios
     const existingService = await Services.findOne({});
 
     if (existingService) {
@@ -19,12 +20,22 @@ const createServicesController = async (service) => {
         existingService.allServices.push(service);
 
         // Actualizar el campo services de los usuarios
-        await User.updateMany({}, { $set: { [`services.${service}`]: null } });
+        await User.updateMany(
+          {},
+          {
+            $set: {
+              [`services.${service}`]: {
+                duration: null,
+                available: true,
+              },
+            },
+          }
+        );
 
         // Guardar la actualización en la base de datos
-        await existingService.save(); // guarda los servicios
+        await existingService.save();
 
-        return existingService; // Puedes devolver el servicio actualizado si es necesario
+        return existingService;
       }
     } else {
       // Si no existe, crear un nuevo documento con el nuevo servicio
@@ -33,12 +44,22 @@ const createServicesController = async (service) => {
       });
 
       // Actualizar el campo services de los usuarios
-      await User.updateMany({}, { $set: { [`services.${service}`]: null } });
+      await User.updateMany(
+        {},
+        {
+          $set: {
+            [`services.${service}`]: {
+              duration: null,
+              available: true,
+            },
+          },
+        }
+      );
 
       // Guardar el nuevo servicio en la base de datos
       await newService.save();
 
-      return newService; // Puedes devolver el nuevo servicio creado si es necesario
+      return newService;
     }
   } catch (error) {
     console.error("Error al crear o actualizar el servicio:", error);
