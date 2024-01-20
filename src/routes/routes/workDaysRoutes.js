@@ -5,6 +5,7 @@ const getDaysByEmailHandler = require("../../handlers/workDaysHandlers/getDaysBy
 const getDaysByServicesHandler = require("../../handlers/workDaysHandlers/getDaysByServicesHandler.js");
 const getDaysHandler = require("../../handlers/workDaysHandlers/getDaysHandler.js");
 const getDayForTurnsHandler = require("../../handlers/workDaysHandlers/getDayForTurnsHandler.js");
+const createTurnHandler = require("../../handlers/workDaysHandlers/createTurnHandler.js");
 
 const router = Router();
 
@@ -14,6 +15,7 @@ router.post("/byservices", getDaysByServicesHandler);
 router.post("/create", createDaysHandler);
 router.post("/byemail", getDaysByEmailHandler);
 router.put("/updateday", updateDayHandler);
+router.put("/turn", createTurnHandler);
 
 /* router.get('/getHours', getHoursHandler); */
 
