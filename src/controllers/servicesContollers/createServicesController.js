@@ -26,7 +26,7 @@ const createServicesController = async (service) => {
             $set: {
               [`services.${service}`]: {
                 duration: null,
-                available: true,
+                available: false,
               },
             },
           }
