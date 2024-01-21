@@ -2,9 +2,9 @@ const updateUserController = require("../../controllers/userControllers/updateUs
 
 
 const updateUserHandler = async (req, res) => {
-  const { email } = req.body;
+  const { email, newServicesDuration } = req.body;
   try {
-    const user = await updateUserController(email);
+    const user = await updateUserController(email, newServicesDuration);
     res.status(200).json({ message: "Cambio al usuario realizado con exito" });
   } catch (error) {
     res.status(500).json({ message: "Error al intentar cambiar usuario" });

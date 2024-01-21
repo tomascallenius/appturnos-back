@@ -1,9 +1,13 @@
 const User = require("../../DB/models/User");
 
-const updateUserController = async (email) => {
+const updateUserController = async (email, newServicesDuration) => {
   try {
     const user = await User.findOne({ email });
-    if (user) {
+    if (newServicesDuration && Object.keys(newServicesDuration).length > 0) {
+      user.services = newServicesDuration;
+      await user.save();
+      return user;
+    } else if (user) {
       user.worker = !user.worker;
       await user.save();
       return user;
