@@ -15,25 +15,3 @@ const getDayForTurnsController = async (dayForTurns) => {
 };
 
 module.exports = getDayForTurnsController;
-
-
-
-/*     const result = {};
-
-    days.forEach((element) => {
-      const { month, day, time, turn, services } = element;
-
-      if (!result[month]) {
-        result[month] = {};
-      }
-
-      if (!result[month][day]) {
-        result[month][day] = {};
-      }
-
-      result[month][day] = {
-        time,
-        turn,
-        services,
-      };
-    }); */
