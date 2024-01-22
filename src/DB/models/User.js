@@ -23,6 +23,14 @@ const UserSchema = new Schema(
       type: Object,
       required: true,
     },
+    isDelete: {
+      type: Boolean,
+      required: true,
+    },
+    phone: {
+      type: String,
+      required: false,
+    }
   },
   {
     timestamps: true,
