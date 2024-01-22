@@ -1,6 +1,5 @@
 const updateUserController = require("../../controllers/userControllers/updateUserController");
 
-
 const updateUserHandler = async (req, res) => {
   const { email, newServicesDuration } = req.body;
   try {

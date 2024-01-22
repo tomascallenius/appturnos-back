@@ -1,6 +1,5 @@
 const getUserByEmailController = require("../../controllers/userControllers/getUserByEmailController");
 
-
 const getUserByEmailHandler = async (req, res) => {
   const { email } = req.body;
   try {
