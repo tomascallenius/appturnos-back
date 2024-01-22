@@ -9,7 +9,7 @@ const getDaysByServicesController = async (serviceForTurns) => {
     days.forEach((element) => {
       const { month, day, turn, time, email, services } = element;
 
-      if (element.services[serviceForTurns].available == true) {
+      if (element.services[serviceForTurns]&& element.services[serviceForTurns].available == true) {
         if (!result[month]) {
           result[month] = {};
         }
@@ -18,6 +18,7 @@ const getDaysByServicesController = async (serviceForTurns) => {
         }
       }
     });
+        console.log(days, "esto es lo que sale del controller");
 
     return result;
   } catch (error) {
