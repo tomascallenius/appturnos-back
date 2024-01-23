@@ -3,8 +3,13 @@ const Schedule = require("../../DB/models/Schedule");
 const getScheduleController = async () => {
   try {
     const existing = await Schedule.findOne();
+
     if (existing) {
-      return existing;
+      let newSchedule = {
+        businessSchedule: existing.businessSchedule,
+        noWorkDays: existing.noWorkDays,
+      };
+      return newSchedule;
     } else {
       const newSchedule = new Schedule({
         businessSchedule: {

@@ -5,9 +5,13 @@ const createServicesController = async (service) => {
   try {
     // Buscar el primer documento en la colección de servicios
     const existingService = await Services.findOne({});
-
+    console.log(service," asi llega el service del find");
+console.log(existingService," asi llega el Existitnfservice");
+    
     if (existingService) {
-      const isServiceIncluded = existingService.allServices.includes(service);
+      const isServiceIncluded = existingService.allServices.some(
+        (arr) => JSON.stringify(arr) === JSON.stringify(service)
+      );
 
       if (isServiceIncluded) {
         // Si el servicio ya existe, retornar un mensaje indicando que ya existe
