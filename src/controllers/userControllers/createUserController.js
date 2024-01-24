@@ -20,7 +20,7 @@ const createUserController = async (name, email) => {
 
       // Crear el objeto de servicios para el nuevo usuario
       const servicesObject = servicesList.reduce((acc, curr) => {
-        acc[curr] = {duration: null, available: false};
+        acc[curr[0]] = {duration: null, available: false};
         return acc;
       }, {});
 

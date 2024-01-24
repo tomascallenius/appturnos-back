@@ -30,7 +30,7 @@ console.log(existingService," asi llega el Existitnfservice");
             $set: {
               [`services.${service}`]: {
                 duration: null,
-                available: true,
+                available: false,
               },
             },
           }
