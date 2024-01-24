@@ -2,9 +2,13 @@ const WorkDay = require("../../DB/models/WorkDay");
 const corroborate = require("../../helpers/corroborateDisponibility");
 
 const createTurnController = async (date, emailWorker, selectedTime, serviceSelected, user) => {
+  console.log("esto es el console log de", date )
+  console.log("esto es el console log de", emailWorker )
+  console.log("esto es el console log de", selectedTime )
+  console.log("esto es el console log de", serviceSelected )
+  console.log("esto es el console log de", user )
   try {
     const asignTurn = await WorkDay.findOne({month: date[1], day: date[0], email: emailWorker});
-
     var newDay = asignTurn
 
     let contador = 0
@@ -27,6 +31,8 @@ const createTurnController = async (date, emailWorker, selectedTime, serviceSele
             newDay.services[element].available = false
         }
     })
+    newDay.turn = true
+
     await newDay.save();
     return newDay;
   } catch (error) {

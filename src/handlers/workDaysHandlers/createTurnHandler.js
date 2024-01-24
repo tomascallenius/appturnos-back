@@ -1,7 +1,7 @@
 const createTurnController = require("../../controllers/workDaysControllers/createTurnController");
 
 const createTurnHandler = async (req, res) => {
-  console.log("pase1");
+
   const { date, emailWorker, selectedTime, serviceSelected, user } = req.body; // cola de solicitudes, NO array
   try {
     const newDays = await createTurnController(date, emailWorker, selectedTime, serviceSelected, user);
