@@ -3,11 +3,13 @@ const myTurnsOfDay = require("../../helpers/myTurnsOfDay");
 
 const getMyTurnsController = async (emailUser) => {
 
-  try {
+    try {
+    
+    let turnResult = []
+
     const days = await WorkDay.find({
       'time': { $in: [emailUser] }
     });
-    let turnResult = []
     
     days.forEach(day => {
         
@@ -22,7 +24,6 @@ const getMyTurnsController = async (emailUser) => {
         })
 
     })
-
 
     return turnResult;
   } catch (error) {
