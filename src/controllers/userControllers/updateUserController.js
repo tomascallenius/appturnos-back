@@ -1,9 +1,22 @@
 const User = require("../../DB/models/User");
 
-const updateUserController = async (email, newServicesDuration) => {
+const updateUserController = async (
+  email,
+  newServicesDuration,
+  newPhoneNumber
+) => {
   try {
     const user = await User.findOne({ email });
-    if (newServicesDuration && Object.keys(newServicesDuration).length > 0) {
+    console.log("lo que sale de luser", user);
+    if (newPhoneNumber.length >= 10) {
+      user.phone = newPhoneNumber;
+      await user.save();
+      console.log(user,"lo que guarda en el user");
+      return user;
+    } else if (
+      newServicesDuration &&
+      Object.keys(newServicesDuration).length > 0
+    ) {
       user.services = newServicesDuration;
       await user.save();
       return user;
