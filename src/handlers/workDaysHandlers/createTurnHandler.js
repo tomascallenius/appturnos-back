@@ -1,4 +1,4 @@
-const createTurnController = require("../../controllers/workDaysControllers/createTurnController");
+const createTurnController = require("../../controllers/workDaysControllers/createTurnsController");
 
 const createTurnHandler = async (req, res) => {
 
