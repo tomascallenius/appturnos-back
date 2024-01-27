@@ -27,8 +27,7 @@ const noNullCancelledController = async (turnsCancelled, month, day, emailCancel
               });
               await newTurnCancelled.save();
             }
-        }
-        console.log("salida de noNullCancelledController")
+          }
     return true;
   } catch (error) {
     console.error("Error al crear en el modelo de turnos cancelados:", error);
